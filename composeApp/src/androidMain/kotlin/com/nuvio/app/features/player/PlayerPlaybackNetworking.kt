@@ -44,7 +44,7 @@ internal object PlayerPlaybackNetworking {
         }
     }
 
-    private val playbackHttpClient: OkHttpClient by lazy {
+    internal val playbackHttpClient: OkHttpClient by lazy {
         OkHttpClient.Builder()
             .dns(IPv4FirstDns())
             .sslSocketFactory(sslContext.socketFactory, trustAllManager)
@@ -60,7 +60,7 @@ internal object PlayerPlaybackNetworking {
             .build()
     }
 
-    private val loopbackPlaybackHttpClient: OkHttpClient by lazy {
+    internal val loopbackPlaybackHttpClient: OkHttpClient by lazy {
         playbackHttpClient.newBuilder()
             .addInterceptor { chain ->
                 val request = chain.request()
